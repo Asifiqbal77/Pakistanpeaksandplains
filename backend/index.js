@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import authRoutes from "./routes/application.js";
+improt tourRouter from "./routes/tour.js";
 import bodyParser from "body-parser";
 
 const app = express();
@@ -20,6 +21,8 @@ mongoose.connect(url)
 
 // ROUTES
 app.use("/api", authRoutes);
+app.use('/uploads', express.static('uploads'));
+app.use('/api/tours', tourRoutes);
 
 // SERVER
 app.listen(5000, () => console.log("Server running on port 5000"));
