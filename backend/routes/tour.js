@@ -1,4 +1,3 @@
-// backend/routes/tour.js
 import express from "express";
 import multer from "multer";
 import { getAllTours, getTourById, createTour } from "../controllers/tourController.js";
@@ -12,13 +11,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Get all tours
 router.get("/", getAllTours);
-
-// Get a tour by ID
 router.get("/:id", getTourById);
-
-// Admin: Create a new tour (with image upload)
+// For admin: create tour with images
 router.post("/", upload.array("images", 10), createTour);
 
 export default router;

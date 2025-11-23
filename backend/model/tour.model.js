@@ -1,17 +1,14 @@
-// backend/model/tour.model.js
 import mongoose from 'mongoose';
 
 const tourSchema = new mongoose.Schema({
   name: { type: String, required: true },
   location: String,
-  duration: String,
-  price: String,
-  maxPeople: Number,
   description: String,
-  images: [String], // Array of image paths
+  price: String,
+  images: [String], // image file paths (Multer)
   itinerary: [String],
   highlights: [String],
-  // Add more fields as needed
+  // Add more fields if you want!
 });
 
 export default mongoose.model('Tour', tourSchema);

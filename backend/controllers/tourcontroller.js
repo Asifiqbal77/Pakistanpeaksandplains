@@ -1,6 +1,6 @@
-// backend/controllers/tourController.js
 import Tour from "../model/tour.model.js";
 
+// Get all tours
 export const getAllTours = async (req, res) => {
   try {
     const tours = await Tour.find();
@@ -10,6 +10,7 @@ export const getAllTours = async (req, res) => {
   }
 };
 
+// Get a single tour by ID
 export const getTourById = async (req, res) => {
   try {
     const tour = await Tour.findById(req.params.id);
@@ -20,9 +21,11 @@ export const getTourById = async (req, res) => {
   }
 };
 
+// Add a new tour with images
 export const createTour = async (req, res) => {
   try {
     const data = req.body;
+    // Save uploaded image paths
     const images = req.files ? req.files.map(file => file.path) : [];
     const tour = new Tour({ ...data, images });
     await tour.save();

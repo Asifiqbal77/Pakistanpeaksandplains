@@ -1,28 +1,24 @@
-
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import authRoutes from "./routes/application.js";
-improt tourRouter from "./routes/tour.js";
+import tourRoutes from "./routes/tour.js";
 import bodyParser from "body-parser";
 
 const app = express();
-const url = "mongodb+srv://asif:123@cluster0.k4mugdm.mongodb.net/?appName=Cluster0"
+const url = "mongodb+srv://asif:123@cluster0.k4mugdm.mongodb.net/?appName=Cluster0";
 
 app.use(cors());
-// app.use(bodyParser.json({extebded:true}));
-// app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json());
 
-// DB CONNECTION
+// Database connect
 mongoose.connect(url)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-// ROUTES
+// Routes
 app.use("/api", authRoutes);
-app.use('/uploads', express.static('uploads'));
-app.use('/api/tours', tourRoutes);
+app.use("/uploads", express.static('uploads'));
+app.use("/api/tours", tourRoutes);
 
-// SERVER
 app.listen(5000, () => console.log("Server running on port 5000"));
