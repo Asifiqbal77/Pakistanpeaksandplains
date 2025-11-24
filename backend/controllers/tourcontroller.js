@@ -22,11 +22,30 @@ export const getTourById = async (req, res) => {
 };
 
 // Add a new tour with images
+// export const createTour = async (req, res) => {
+//   try {
+//     const data = req.body;
+//     // Save uploaded image paths
+//     const images = req.files ? req.files.map(file => file.path) : [];
+//     const tour = new Tour({ ...data, images });
+//     await tour.save();
+//     res.json({ message: "Tour created", tour });
+//   } catch (err) {
+//     res.status(500).json({ message: "Failed to create tour" });
+//   }
+// };
+
+
+// Add a new tour with images
 export const createTour = async (req, res) => {
   try {
     const data = req.body;
-    // Save uploaded image paths
-    const images = req.files ? req.files.map(file => file.path) : [];
+    // Store only the relative path for images
+    const images = req.files
+      ? req.files.map(file => file.path.replace(/\\/g, "/"))
+      : [];
+    // Optionally, if file.path returns absolute path, convert to relative:
+    // const images = req.files.map(file => "uploads/" + file.filename)
     const tour = new Tour({ ...data, images });
     await tour.save();
     res.json({ message: "Tour created", tour });

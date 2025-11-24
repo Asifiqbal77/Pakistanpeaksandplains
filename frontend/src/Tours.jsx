@@ -19,9 +19,15 @@ function Tours() {
 
   return (
     <section className="container mt-5">
-      <div className="d-flex justify-content-between align-items-center mb-3">
+      <div
+  className="d-flex justify-content-between align-items-center mb-3"
+  style={{ backgroundColor: "#556B2F", padding: "10px", borderRadius: "6px" }}
+>
+  <h2 className="h4 mb-0">Pakistan Tours in Exotic Holiday Destinations</h2>
+</div>
+      {/* <div className="d-flex justify-content-between align-items-center mb-3">
         <h2 className="h4 mb-0">Pakistan Tours in Exotic Holiday Destinations</h2>
-      </div>
+      </div> */}
       <div className="row">
         {tours.map((tour, idx) => (
           <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={tour._id ?? idx}>
@@ -37,9 +43,12 @@ function Tours() {
                   <h5 className="card-title">{tour.name}</h5>
                   <p className="card-text">{tour.description}</p>
                 </div>
-                <Link to={`/hunza/${tour._id}`} className="btn btn-primary mt-2">
+                  <Link to={`/${tour.name.toLowerCase().replace(/\s/g, "")}/${tour._id}`} className="btn btn-primary mt-2">
                   More Details
-                </Link>
+                  </Link>
+                {/* <Link to={`/hunza/${tour._id}`} className="btn btn-primary mt-2">
+                  More Details
+                </Link> */}
               </div>
             </div>
           </div>

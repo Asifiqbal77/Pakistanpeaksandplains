@@ -5,6 +5,7 @@ import Login from './Login'
 import Booking from './Booking'
 import AboutUs from './AboutUs'
 import HunzaPage from "./HunzaPage"
+import NaranPage from "./NaranPage"
 import Adminpage from "./Adminpage"
 import CreateTour from "./CreatTour"
 import ManageTours from "./ManageTours"
@@ -18,7 +19,8 @@ const route = createBrowserRouter([
     {path:"/" , element : <Landingpage />} , 
     {path: "login" , element: <Login/>} , 
     {path: "booking" , element: <Booking />} , 
-    {path:"/hunza"  , element : <HunzaPage />} , 
+    {path:"/hunzavalleytours/:id"  , element : <HunzaPage />} , 
+    {path:"/naranvalleytours/:id" ,element: <NaranPage />},
     {path: "aboutus" , element: <AboutUs />} , 
     {path: "/admin" , element: <Adminpage/>} , 
     // {path : "/admin/create" , element: <CreateTour />},
